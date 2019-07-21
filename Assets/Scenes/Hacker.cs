@@ -7,6 +7,7 @@ public class Hacker : MonoBehaviour
 {
     enum Screen { MainMenu, Password, Win };
 
+    const string menuHint = "You may type menu anytime.";
     string[] level1Passwords = { "books", "aisle", "shelf", "password", "font", "borrow" };
     string[] level2Passwords = { "prisoner", "handcuffs", "holster", "uniform", "arrest" };
 
@@ -27,6 +28,7 @@ public class Hacker : MonoBehaviour
         Terminal.WriteLine("What would you like to hack into?");
         Terminal.WriteLine("Press 1 for the local library.");
         Terminal.WriteLine("Press 2 for the local police station.");
+        Terminal.WriteLine(menuHint);
         Terminal.WriteLine("Enter your selection:");
     }
 
@@ -64,7 +66,8 @@ public class Hacker : MonoBehaviour
         }
         else
         {
-            Terminal.WriteLine("Please select a level");
+            Terminal.WriteLine("Please select a valid level");
+            Terminal.WriteLine(menuHint);
         }
     }
 
