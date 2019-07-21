@@ -10,6 +10,7 @@ public class Hacker : MonoBehaviour
     const string menuHint = "You may type menu anytime.";
     string[] level1Passwords = { "books", "aisle", "shelf", "password", "font", "borrow" };
     string[] level2Passwords = { "prisoner", "handcuffs", "holster", "uniform", "arrest" };
+    string[] level3Passwords = { "starfield", "telescope", "environment", "exploration", "astronauts" };
 
     int level;
     Screen currentScreen;
@@ -28,6 +29,7 @@ public class Hacker : MonoBehaviour
         Terminal.WriteLine("What would you like to hack into?");
         Terminal.WriteLine("Press 1 for the local library.");
         Terminal.WriteLine("Press 2 for the local police station.");
+        Terminal.WriteLine("Press 3 for NASA.");
         Terminal.WriteLine(menuHint);
         Terminal.WriteLine("Enter your selection:");
     }
@@ -50,7 +52,7 @@ public class Hacker : MonoBehaviour
 
     private void RunMainMenu(string input)
     {
-        bool isValidLevelNumber = (input == "1" || input == "2");
+        bool isValidLevelNumber = (input == "1" || input == "2" || input == "3");
         if (isValidLevelNumber)
         {
             level = int.Parse(input);
@@ -109,6 +111,17 @@ hjw  / __.==--
     /#(-'
     `-'
 ");
+                Terminal.WriteLine("Play again for a greater challenge.");
+                break;
+            case 3:
+                Terminal.WriteLine("Have an alien...");
+                Terminal.WriteLine(@"
+        .-""`""-.      |(@ @)
+     _/`oOoOoOoOo`\_ \ \-/
+    '.-=-=-=-=-=-=-.' \/ \
+jgs   `-=.=-.-=.=-'    \ /\
+         ^  ^  ^       _H_ \
+");
                 break;
             default:
                 Debug.LogError("Invalid level reached");
@@ -133,6 +146,9 @@ hjw  / __.==--
                 break;
             case 2:
                 password = level2Passwords[UnityEngine.Random.Range(0, level2Passwords.Length)];
+                break;
+            case 3:
+                password = level3Passwords[UnityEngine.Random.Range(0, level3Passwords.Length)];
                 break;
         }
     }
